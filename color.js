@@ -46,6 +46,7 @@ function Color() {
     }
 
     if (typeof input == 'object') {
+
       var defaults = this.hsv(),
           valid = [['hue', 360], ['saturation', 100], ['value', 100]]
             .map(([prop, maxVal]) => {
@@ -65,6 +66,7 @@ function Color() {
             m = v - c,
             [red, green, blue] = a[Math.ceil(h)].map(v => 255 * (v + m));
 
+
         this.rgb({red: red, green: green, blue: blue});
         defaultHue = input.hue;
         return this;
@@ -79,15 +81,12 @@ function Color() {
         c = value - Math.min(r, g, b);
 
     if (c == 0) var hue = defaultHue;
-    else if (value == r) var hue = (g < b) ? 360 - 60 * (g - b) / c : 60 * (g - b) / c;
+    else if (value == r) var hue = (g < b) ? 360 + 60 * (g - b) / c : 60 * (g - b) / c;
     else if (value == g) var hue = 60 * (2 + (b - r) / c);
     else var hue = 60 * (4 + (r - g) / c);
 
     var saturation = (value == 0) ? 0 : c / value * 100;
 
-    console.log(red);
-    console.log(green);
-    console.log(blue);
     return {
       hue: hue,
       saturation: saturation,
@@ -144,7 +143,7 @@ function Color() {
         lightness = v - c / 2;
 
     if (c == 0) var hue = defaultHue;
-    else if (v == r) var hue = (g < b) ? 360 - 60 * (g - b) / c : 60 * (g - b) / c;
+    else if (v == r) var hue = (g < b) ? 360 + 60 * (g - b) / c : 60 * (g - b) / c;
     else if (v == g) var hue = 60 * (2 + (b - r) / c);
     else var hue = 60 * (4 + (r - g) / c);
 
@@ -197,9 +196,9 @@ function Color() {
         g = rgb.green / 255,
         b = rgb.blue / 255,
         key = 1 - Math.max(r, g, b),
-        cyan = (1 - r - key) / (1 - key) * 100,
-        magenta = (1 - g - key) / (1 - key) * 100,
-        yellow = (1 - b - key) / (1 - key) * 100;
+        cyan = key == 1 ? 0 : (1 - r - key) / (1 - key) * 100,
+        magenta = key == 1 ? 0 : (1 - g - key) / (1 - key) * 100,
+        yellow = key == 1 ? 0 : (1 - b - key) / (1 - key) * 100;
 
     return {
       cyan: cyan,
