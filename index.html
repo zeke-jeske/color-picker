@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Color Picker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="picker">
+      <div id="preview"></div>
+      <div id="pane">
+        <div id="white-to-pure-color"></div>
+        <div id="transparent-to-black"></div>
+        <div id="knob"></div>
+      </div>
+
+      <input id="hue" type="range" min="0" max="360" value="0">
+
+      <p id="formats">
+        Hex:<br>
+        <input type="text" value="#ff0000" id="hex" class="color-format" /><br><br>
+        RGB:<br>
+        <input type="text" value="255, 0, 0" id="rgb" class="color-format" /><br><br>
+        HSL:<br>
+        <input type="text" value="0°, 100%, 50%" id="hsl" class="color-format" /><br><br>
+        HSV:<br>
+        <input type="text" value="0°, 100%, 100%" id="hsv" class="color-format" /><br><br>
+      </p>
+    </div>
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="color.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

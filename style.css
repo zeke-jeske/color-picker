@@ -1,0 +1,90 @@
+:root {
+  --hue: 0;
+  --color: red;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+#picker {
+  display: grid;
+  padding: 15px;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'preview pane'
+    'hue hue'
+    'opacity opacity'
+    'formats formats';
+  grid-gap: 15px;
+  justify-items: stretch;
+}
+
+#preview {
+  min-width: 200px;
+  min-height: 200px;
+  background-color: var(--color);
+  grid-area: preview;
+}
+
+#pane {
+  min-width: 200px;
+  min-height: 200px;
+  position: relative;
+  cursor: pointer;
+  grid-area: pane;
+}
+
+#white-to-pure-color {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: linear-gradient(to right, white, hsl(var(--hue), 100%, 50%));
+}
+
+#transparent-to-black {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: linear-gradient(transparent, black);
+}
+
+#knob {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  right: -10px;
+  bottom: calc(100% - 10px);
+  background-color: var(--color);
+}
+
+#hue {
+  -webkit-appearance: none;
+  height: 20px;
+  outline: none;
+  border-radius: 3px;
+  background-image: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia, red);
+  cursor: pointer;
+  grid-area: hue;
+}
+
+#hue::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 26px;
+  border: 3px solid black;
+  border-radius: 3px;
+  cursor: ew-resize;
+}
+
+#formats {
+  grid-area: formats;
+}
